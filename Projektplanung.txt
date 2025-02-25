@@ -1,0 +1,11 @@
+Ablauf:
+
+- Gehäuse zeichnen / drucken -> würde ich später machen
+- (Kamera mit WLAN verbinden) -> gehört zu Punkt 3
+- Kamerabild auf Laptop übertragen
+- Machbarkeit der Bildaufnahme an Kühlschranktür testen
+- Objekterkennung mit Yolo testen
+- Liste erstellen, was im Kühlschrank vorhanden ist
+- Programmieren, das definierte Objekte erkannt werden
+- Weitere Features programmieren
+- Evtl. eigenes Modell trainieren
