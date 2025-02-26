@@ -1,7 +1,6 @@
 Ablauf:
 
-- Gehäuse zeichnen / drucken -> würde ich später machen
-- (Kamera mit WLAN verbinden) -> gehört zu Punkt 3
+- Gehäuse zeichnen / drucken
 - Kamerabild auf Laptop übertragen
 - Machbarkeit der Bildaufnahme an Kühlschranktür testen
 - Objekterkennung mit Yolo testen
