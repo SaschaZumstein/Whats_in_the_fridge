@@ -1,0 +1,24 @@
+import ultralytics
+from ultralytics import YOLO
+ultralytics.checks()
+
+import os
+import cv2
+import matplotlib.pyplot as plt
+
+#model = YOLO("yolo11n.pt")
+
+def plot_results(results):
+    img = results[0].plot()
+    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) # Convert image to RGB
+    plt.imshow(img_rgb)  # Display results
+    plt.axis('off')  # Hide axes
+    plt.show()
+
+model = YOLO("yolo11n.pt")
+
+# Predict on an image
+results = model("C:/Users/FHGR/Documents/Bildverarbeitung_1/Software/object_detection/Pictures/balls.jpg")
+
+# Plot the results
+plot_results(results)
