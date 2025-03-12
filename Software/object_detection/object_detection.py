@@ -15,10 +15,11 @@ def plot_results(results):
     plt.axis('off')  # Hide axes
     plt.show()
 
-model = YOLO("yolo11n.pt")
+model = YOLO("yolov8n.pt")
 
 # Predict on an image
-results = model("C:/Users/FHGR/Documents/Bildverarbeitung_1/Software/object_detection/Pictures/balls.jpg")
+#results = model("C:/Users/FHGR/Documents/Bildverarbeitung_1/Software/object_detection/Pictures/gurke.jpg")
+results = model("Software/object_detection/Pictures/karotte.jpeg")
 
 # Plot the results
 plot_results(results)
