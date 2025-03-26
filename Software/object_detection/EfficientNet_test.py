@@ -11,6 +11,8 @@ warnings.filterwarnings('ignore')
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 print(f'Using {device} for inference')
 
+
+
 efficientnet = torch.hub.load('NVIDIA/DeepLearningExamples:torchhub', 'nvidia_efficientnet_b0', pretrained=True)
 utils = torch.hub.load('NVIDIA/DeepLearningExamples:torchhub', 'nvidia_convnets_processing_utils')
 
@@ -18,8 +20,8 @@ efficientnet.eval().to(device)
 
 uris = [
     'https://gemuesebodensee.ch/sites/default/files/styles/spalte_rechts_1_3/public/produktebilder/Gurke_kl_0.jpg?itok=GIDvNZzG',
-    'http://images.cocodataset.org/test-stuff2017/000000028117.jpg',
-    'http://images.cocodataset.org/test-stuff2017/000000006149.jpg',
+    'https://chefsmandala.com/wp-content/uploads/2018/03/Squash-Zucchini.jpg',
+    'https://i.pinimg.com/736x/55/f0/6a/55f06adb0295765e2e120249e817f78f.jpg',
     'http://images.cocodataset.org/test-stuff2017/000000004954.jpg',
 ]
 
