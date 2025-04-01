@@ -19,6 +19,7 @@ while True:
         print("Error: No frame received!")
         break
     
+    cv2.imshow("ESP32-CAM Stream", frame)
     # Convert to grayscale
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     cv2.imshow("ESP32-CAM Stream (Grayscale)", gray_frame)
