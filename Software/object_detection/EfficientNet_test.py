@@ -19,7 +19,7 @@ utils = torch.hub.load('NVIDIA/DeepLearningExamples:torchhub', 'nvidia_convnets_
 efficientnet.eval().to(device)
 
 uris = [
-    'https://gemuesebodensee.ch/sites/default/files/styles/spalte_rechts_1_3/public/produktebilder/Gurke_kl_0.jpg?itok=GIDvNZzG',
+    'https://www.gesundheit-nds-hb.de/fileadmin/_processed_/9/1/csm_gemeinsam-gesund-essen-1_ecb4d33ca6.jpeg',
     'https://chefsmandala.com/wp-content/uploads/2018/03/Squash-Zucchini.jpg',
     'https://i.pinimg.com/736x/55/f0/6a/55f06adb0295765e2e120249e817f78f.jpg',
     'http://images.cocodataset.org/test-stuff2017/000000004954.jpg',
