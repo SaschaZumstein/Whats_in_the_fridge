@@ -3,7 +3,7 @@ from ultralytics import YOLO
 ultralytics.checks()
 import cv2
 
-model_path = "C:/Bildverarbeitung_1/runs/detect/train/weights/best.pt"
+model_path = "C:/Bildverarbeitung_1/runs/detect/train2/weights/last.pt"
 model = YOLO(model_path)
 
 # Predict on an image
