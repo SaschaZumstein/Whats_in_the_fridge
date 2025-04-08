@@ -22,7 +22,6 @@ uris = [
     'https://www.gesundheit-nds-hb.de/fileadmin/_processed_/9/1/csm_gemeinsam-gesund-essen-1_ecb4d33ca6.jpeg',
     'https://chefsmandala.com/wp-content/uploads/2018/03/Squash-Zucchini.jpg',
     'https://i.pinimg.com/736x/55/f0/6a/55f06adb0295765e2e120249e817f78f.jpg',
-    'http://images.cocodataset.org/test-stuff2017/000000004954.jpg',
 ]
 
 # Convert all images to RGB before creating the batch
