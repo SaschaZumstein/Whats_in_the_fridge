@@ -1,7 +1,7 @@
 import os
 
 # Pfad zum Ordner mit den Label-Dateien
-labels_dir = "C:/Bildverarbeitung_1/train_yolo/dataset_eggs/labels/train"
+labels_dir = "./train_yolo/dataset_eggs/labels/train"
 
 # Durchlaufe alle .txt-Dateien im Label-Ordner
 for label_file in os.listdir(labels_dir):
