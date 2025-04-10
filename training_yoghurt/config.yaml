@@ -1,0 +1,6 @@
+path: C:/Bildverarbeitung_1/training_yoghurt/dataset_yoghurt
+train: images/train
+val: images/train
+
+names:
+  0 : Yoghurt
