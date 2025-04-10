@@ -1,7 +1,7 @@
 task: detect
 mode: train
-model: yolov8n.yaml
-data: C:/Users/FHGR/Documents/Bildverarbeitung_1/roboflow/data.yaml
+model: yolov8n.pt
+data: ./train_yolo/config.yaml
 epochs: 100
 time: null
 patience: 100

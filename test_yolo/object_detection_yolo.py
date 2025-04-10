@@ -2,14 +2,27 @@ import ultralytics
 from ultralytics import YOLO
 ultralytics.checks()
 import cv2
+import os
+import numpy as np
 
-model_path = "C:/Bildverarbeitung_1/runs/detect/train2/weights/last.pt"
-model = YOLO(model_path)
 
-# Predict on an image
-results = model("C:/Bildverarbeitung_1/test_yolo/karotte.jpeg")
+model_path = "./runs/detect/train2/weights/last.pt"
+model_pretrained = YOLO("yolov8n.pt")
+model_selftrained = YOLO(model_path)
 
-# Plot the results
-img = results[0].plot()
-cv2.imshow("img", img)  # Display results
-cv2.waitKey(0)
+image_dir = "./Pictures"
+
+for filename in os.listdir(image_dir):
+    if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+        image_path = os.path.join(image_dir, filename)       
+
+    # Predict on an image
+    results_pretrained = model_pretrained(image_path)
+    results_selftrained = model_selftrained(image_path)
+
+    img_pretrained = results_pretrained[0].plot()
+    img_selftrained = results_selftrained[0].plot()
+
+    combined = np.hstack((img_pretrained, img_selftrained))
+
+    cv2.imwrite(f"test_yolo/output/vergleich_{filename}.jpg", combined)

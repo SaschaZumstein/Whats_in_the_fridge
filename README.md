@@ -1,10 +1,18 @@
 # Bildverarbeitung_1
 Projekt Bildverarbeitung 1
 
-To Do: 
-- Projektplanung
+Klassen aus Standardbibliothek:
+- Bottle id 39
+- carrot id 51
 
-To Do Sascha:
+Selbst trainiert:
+- Eierkarton mit Eier darin
+- Yoghurt
+- Peperoni (Bell pepper)
 
+To Do:
+- Sascha: 
+    - Peperoni mit open Image erkennen
 
-To Do Ueli:
+- Ueli:
+    - Yoghurt labeln und erkennen

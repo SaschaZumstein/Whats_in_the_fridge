@@ -1,8 +1,8 @@
 task: detect
 mode: train
-model: yolov8m.pt
-data: roboflow/data.yaml
-epochs: 50
+model: yolov8n.pt
+data: ./train_yolo/config.yaml
+epochs: 100
 time: null
 patience: 100
 batch: 16
