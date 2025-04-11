@@ -1,4 +1,4 @@
-path: C:/Bildverarbeitung_1/training_yoghurt/dataset_yoghurt
+path: C:/Users/FHGR/Documents/Bildverarbeitung_1/training_yoghurt/dataset_yoghurt
 train: images/train
 val: images/train
 
