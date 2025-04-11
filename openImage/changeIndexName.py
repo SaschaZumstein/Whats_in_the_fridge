@@ -1,7 +1,9 @@
 import os
 
 # Pfad zum Ordner mit den Label-Dateien
-labels_dir = "./train_yolo/dataset_eggs/labels/train"
+labels_dir = "./openImage/dataset/labels"
+old_text = "Bell pepper"
+new_text = "0"
 
 # Durchlaufe alle .txt-Dateien im Label-Ordner
 for label_file in os.listdir(labels_dir):
@@ -16,6 +18,6 @@ for label_file in os.listdir(labels_dir):
         # Ersetze "Egg" mit "0"
         with open(label_path, "w") as file:
             for line in lines:
-                file.write(line.replace("Egg", "0"))
+                file.write(line.replace(old_text, new_text))
 
-print("Alle 'Egg'-Labels wurden zu '0' umgewandelt.")
+print(f"Alle '{old_text}'-Labels wurden zu '{new_text}' umgewandelt.")
