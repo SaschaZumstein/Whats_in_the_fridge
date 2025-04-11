@@ -13,6 +13,8 @@ Selbst trainiert:
 To Do:
 - Sascha: 
     - Peperoni mit open Image erkennen
+    - Test Bilder vom Kühlschrank machen
 
 - Ueli:
     - Yoghurt labeln und erkennen
+    - Test Bilder vom Kühlschrank machen
