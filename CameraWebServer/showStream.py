@@ -52,6 +52,7 @@ while True:
         if (not person_in_frame(results)) and is_not_blurry(frame_gray):
             cv2.imwrite(f"./CameraWebServer/images/img_{index}.png", annotated_frame)
             index += 1
+            # Write numbers and classes to list
 
         cv2.imshow("YOLOv8", annotated_frame)
 

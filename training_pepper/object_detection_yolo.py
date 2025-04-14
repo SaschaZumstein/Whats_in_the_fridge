@@ -9,4 +9,4 @@ confidence_threshold = 0.3
 
 model = YOLO(model_path + "/weights/best.pt")
 # Predict on an image
-results = model(image_dir, save=True, project=model_path, conf=confidence_threshold) 
+results = model(image_dir, save=True, project=model_path) 
