@@ -3,10 +3,12 @@ import requests
 import ultralytics
 from ultralytics import YOLO
 ultralytics.checks()
+from collections import Counter
 import numpy as np
 
 confidence_threshold = 0.3
 index = 0
+file_path = "./CameraWebServer/images"
 
 # ESP32-CAM Stream-URL
 URL = "http://192.168.204.60"
@@ -36,6 +38,13 @@ def is_not_blurry(image_gray, threshold=100.0):
     laplacian_var = cv2.Laplacian(image_gray, cv2.CV_64F).var()
     return laplacian_var > threshold
 
+def writeClassesToList(results, index):
+    detected_classes = [results[0].names[int(box.cls)] for box in results[0].boxes] 
+    class_counts = Counter(detected_classes)
+    with open(file_path + f"/img_{index}.txt", "w", encoding="utf-8") as f:
+        for cls, count in class_counts.items():
+            f.write(f"{count}x: {cls}" + "\n")
+
 while True:
     ret, frame = cap.read()
     if not ret:
@@ -50,9 +59,9 @@ while True:
 
         # check if person is in image
         if (not person_in_frame(results)) and is_not_blurry(frame_gray):
-            cv2.imwrite(f"./CameraWebServer/images/img_{index}.png", annotated_frame)
+            cv2.imwrite(file_path + f"/img_{index}.png", annotated_frame)
+            writeClassesToList(results, index)
             index += 1
-            # Write numbers and classes to list
 
         cv2.imshow("YOLOv8", annotated_frame)
 
