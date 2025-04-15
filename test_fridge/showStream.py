@@ -8,7 +8,7 @@ import numpy as np
 
 confidence_threshold = 0.3
 index = 0
-file_path = "./CameraWebServer/images"
+file_path = "./test_fridge/images"
 
 # ESP32-CAM Stream-URL
 URL = "http://192.168.204.60"
