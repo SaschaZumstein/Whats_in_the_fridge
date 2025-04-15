@@ -14,6 +14,10 @@ To Do:
 - Sascha: 
     - Peperoni mit open Image erkennen
     - Test Bilder vom Kühlschrank machen
+    
+    Gemacht:
+    - Peperoni-Modell trainiert
+    - mit main.py unter test_fridge Tests im Kühlschrank gemacht und die Bilder gefiltert
 
 - Ueli:
     - Yoghurt labeln und erkennen
