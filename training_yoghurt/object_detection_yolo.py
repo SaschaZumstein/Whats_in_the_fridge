@@ -2,7 +2,7 @@ import ultralytics
 from ultralytics import YOLO
 ultralytics.checks()
 
-model_path = "./training_yoghurt/models/model_V"
+model_path = "./training_yoghurt/models/model_V6"
 image_dir = "./Test_Pictures"
 
 model = YOLO(model_path + "/weights/best.pt")
