@@ -6,19 +6,12 @@ Klassen aus Standardbibliothek:
 - carrot id 51
 
 Selbst trainiert:
-- Eierkarton mit Eier darin
-- Yoghurt
-- Peperoni (Bell pepper)
+- Yoghurt (noch weiterarbeiten)
+- Peperoni (Bell pepper) (so lassen)
 
 To Do:
 - Sascha: 
-    - Peperoni mit open Image erkennen
-    - Test Bilder vom Kühlschrank machen
-    
-    Gemacht:
-    - Peperoni-Modell trainiert
-    - mit main.py unter test_fridge Tests im Kühlschrank gemacht und die Bilder gefiltert
+    - Bildvorverarbeitung und Erkennung - Code
 
 - Ueli:
-    - Yoghurt labeln und erkennen
-    - Test Bilder vom Kühlschrank machen
+    - Yoghurt labeln und erkennen - Training
