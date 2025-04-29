@@ -3,7 +3,7 @@ from ultralytics import YOLO
 ultralytics.checks()
 from collections import defaultdict
 
-model_path = "./training_pepper/models/model_V"
+model_path = "./training_pepper_yoghurt/models/model_V3"
 image_dir = "./Test_Pictures"
 confidence_threshold = 0.3
 

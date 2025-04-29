@@ -2,13 +2,13 @@ from ultralytics import YOLO
 
 # start from begin
 
-config_path = "./training_pepper/config.yaml"
-model_path = "./training_pepper/models"
+config_path = "./training_pepper_yoghurt/config.yaml"
+model_path = "./training_pepper_yoghurt/models"
 
 # Load a COCO-pretrained YOLOv8n model
-#model = YOLO("yolov8n.pt")
+model = YOLO("yolov8n.pt")
 
-#results = model.train(data=config_path, epochs=100, project=model_path, name="model_V")
+results = model.train(data=config_path, epochs=200, project=model_path, name="model_V")
 
 # start with already trained data
 
