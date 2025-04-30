@@ -1,5 +1,4 @@
 import cv2
-import requests
 import ultralytics
 from ultralytics import YOLO
 ultralytics.checks()
@@ -13,7 +12,7 @@ confidence_threshold = 0.3
 image_path = "./test_fridge/images"
 yolov8_path = "yolov8n.pt"
 wanted_classes = [0, 39, 51]
-yolo_trained_path = "./training_pepper_yoghurt/models/model_V/weights/best.pt"
+yolo_trained_path = "./training_pepper_yoghurt/models/model_V3/weights/best.pt"
 frame_skip = 5 
 SHOW_WINDOWS = True
 
@@ -72,13 +71,13 @@ while True:
     if not frame_queue.empty():
         frame = frame_queue.get()
 
-        # Only process every 5th frame
-        frame_cntr += 1
-        if frame_cntr % frame_skip != 0:
-            continue
-
         frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         if is_bright_enough(frame_gray) and is_not_blurry(frame_gray):
+            # Only process every 5th frame
+            frame_cntr += 1
+            if frame_cntr % frame_skip != 0:
+                continue
+
             # Predict with yolo
             results_yolo = model_yolo(frame, conf=confidence_threshold, classes=wanted_classes)
             classes_yolo = extractClasses(results_yolo)
