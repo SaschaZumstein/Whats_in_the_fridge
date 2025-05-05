@@ -1,6 +1,0 @@
-path: C:/Bildverarbeitung_1/training_eggs/dataset_eggs
-train: images/train
-val: images/train
-
-names:
-  0 : Egg

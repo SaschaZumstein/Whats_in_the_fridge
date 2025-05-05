@@ -6,12 +6,5 @@ Klassen aus Standardbibliothek:
 - carrot id 51
 
 Selbst trainiert:
-- Yoghurt (noch weiterarbeiten)
-- Peperoni (Bell pepper) (so lassen)
-
-To Do:
-- Sascha: 
-    - Bildvorverarbeitung und Erkennung - Code
-
-- Ueli:
-    - Yoghurt labeln und erkennen - Training
+- Yoghurt
+- Peperoni (Bell pepper)

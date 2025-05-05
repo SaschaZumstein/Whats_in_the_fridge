@@ -1,6 +1,0 @@
-path: C:/Bildverarbeitung_1/training_pepper/dataset_pepper
-train: images/train
-val: images/train
-
-names:
-  0 : Pepper
