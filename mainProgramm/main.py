@@ -44,7 +44,7 @@ def person_in_frame(classes):
     return ("person" in classes)
 
 def is_not_blurry(image_gray, threshold=30.0):
-    laplacian_var = cv2.Laplacian(image_gray, cv2.CV_64F).var()
+    laplacian_var = cv2.Laplacian(image_gray, cv2.CV_64F).var() # variance of a laplacian filter
     return laplacian_var > threshold
 
 def writeClassesToList(classes0, classes1):
@@ -117,7 +117,7 @@ while True:
             else:
                 combined_frame = frame_yolo
 
-            # Debug only
+            # For debug reasons only
             if SHOW_WINDOWS:
                 cv2.imshow("Detection", resize_for_display(combined_frame))
         elif SHOW_WINDOWS:
