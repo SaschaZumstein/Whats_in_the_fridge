@@ -9,7 +9,7 @@ import queue
 import os
 
 confidence_threshold = 0.3
-image_path = "./test_fridge/output"
+image_path = "./mainProgramm/output"
 yolov8_path = "yolov8n.pt"
 wanted_classes = [0, 39, 51]
 yolo_trained_path = "./training_pepper_yoghurt/models/model_V3/weights/best.pt"
@@ -42,7 +42,7 @@ def extractClasses(results):
 def person_in_frame(classes):
     return ("person" in classes)
 
-def is_not_blurry(image_gray, threshold=100.0):
+def is_not_blurry(image_gray, threshold=30.0):
     laplacian_var = cv2.Laplacian(image_gray, cv2.CV_64F).var()
     return laplacian_var > threshold
 
@@ -70,9 +70,10 @@ frame_cntr = 0
 while True:
     if not frame_queue.empty():
         frame = frame_queue.get()
+        frame_trained = frame
 
         frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        if is_bright_enough(frame_gray) and is_not_blurry(frame_gray):
+        if is_bright_enough(frame_gray) and is_not_blurry(frame_gray): 
             # Only process every 5th frame
             frame_cntr += 1
             if frame_cntr % frame_skip != 0:
@@ -94,16 +95,19 @@ while True:
                 cv2.imwrite(image_path + "/img_trained.png", frame_trained)
                 writeClassesToList(classes_yolo, classes_trained)
 
-                # Debug only
-                if SHOW_WINDOWS:
-                    cv2.imshow("YOLO Trained", frame_trained)
-                    cv2.imshow("YOLOv8", frame_yolo)
-            elif SHOW_WINDOWS:
-                cv2.imshow("YOLOv8", frame_yolo)
+            # Debug only
+            if SHOW_WINDOWS:
+                scaled_trained = cv2.resize(frame_trained, (640, 480))
+                cv2.imshow("YOLO Trained", scaled_trained)
+                scaled_yolo = cv2.resize(frame_yolo, (640, 480))
+                cv2.imshow("YOLOv8", scaled_yolo)
         elif SHOW_WINDOWS:
-            cv2.putText(frame, "Image too dark", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-            cv2.putText(frame, "or too blurry", (10, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-            cv2.imshow("YOLOv8", frame)
+            scaled_trained = cv2.resize(frame_trained, (640, 480))
+            cv2.imshow("YOLO Trained", scaled_trained)
+            scaled = cv2.resize(frame, (640, 480))
+            cv2.putText(scaled, "Image too dark", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+            cv2.putText(scaled, "or too blurry", (10, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+            cv2.imshow("YOLOv8", scaled)
 
     # escape with q
     if cv2.waitKey(1) & 0xFF == ord('q'):

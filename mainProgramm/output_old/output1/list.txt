@@ -1,0 +1,4 @@
+2x: carrot
+2x: bottle
+2x: Yoghurt
+1x: Pepper
