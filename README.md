@@ -11,7 +11,7 @@ Selbst trainiert:
 
 To Do:
 - Sascha: 
-    - Bildvorverarbeitung und Erkennung - Code
+    - Tests
 
 - Ueli:
-    - Yoghurt labeln und erkennen - Training
+    - Tests
