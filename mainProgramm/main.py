@@ -1,6 +1,7 @@
 import cv2
 import ultralytics
 from ultralytics import YOLO
+from ultralytics.utils.plotting import colors
 ultralytics.checks()
 from collections import Counter
 import numpy as np
@@ -52,6 +53,25 @@ def writeClassesToList(classes0, classes1):
         for cls, count in class_counts.items():
             f.write(f"{count}x: {cls}" + "\n")
 
+def resize_for_display(frame):
+    return cv2.resize(frame, (920, 690))
+
+def get_color(cls_id):
+    return tuple(int(c) for c in colors(cls_id))
+
+def draw_combined_boxes(frame, results_list):
+    overlay = frame.copy()
+    for results in results_list:
+        for box in results[0].boxes:
+            cls_id = int(box.cls)
+            conf = float(box.conf)
+            x1, y1, x2, y2 = map(int, box.xyxy[0])
+            label = f"{results[0].names[cls_id]} {conf:.2f}"
+            color = get_color(cls_id)
+            cv2.rectangle(overlay, (x1, y1), (x2, y2), color, 2)
+            cv2.putText(overlay, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
+    return overlay
+
 # read the frames from the camera
 def frame_reader():
     while True:
@@ -70,7 +90,6 @@ frame_cntr = 0
 while True:
     if not frame_queue.empty():
         frame = frame_queue.get()
-        frame_trained = frame
 
         frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         if is_bright_enough(frame_gray) and is_not_blurry(frame_gray): 
@@ -91,23 +110,21 @@ while True:
                 classes_trained = extractClasses(results_trained)
                 frame_trained = results_trained[0].plot()
 
-                cv2.imwrite(image_path + "/img_yolo.png", frame_yolo)
-                cv2.imwrite(image_path + "/img_trained.png", frame_trained)
+                combined_frame = draw_combined_boxes(frame, [results_yolo, results_trained])
+
+                cv2.imwrite(image_path + "/img.png", combined_frame)
                 writeClassesToList(classes_yolo, classes_trained)
+            else:
+                combined_frame = frame_yolo
 
             # Debug only
             if SHOW_WINDOWS:
-                scaled_trained = cv2.resize(frame_trained, (640, 480))
-                cv2.imshow("YOLO Trained", scaled_trained)
-                scaled_yolo = cv2.resize(frame_yolo, (640, 480))
-                cv2.imshow("YOLOv8", scaled_yolo)
+                cv2.imshow("Detection", resize_for_display(combined_frame))
         elif SHOW_WINDOWS:
-            scaled_trained = cv2.resize(frame_trained, (640, 480))
-            cv2.imshow("YOLO Trained", scaled_trained)
-            scaled = cv2.resize(frame, (640, 480))
-            cv2.putText(scaled, "Image too dark", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-            cv2.putText(scaled, "or too blurry", (10, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-            cv2.imshow("YOLOv8", scaled)
+            scaled_frame = resize_for_display(frame)
+            cv2.putText(scaled_frame, "Image too dark", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+            cv2.putText(scaled_frame, "or too blurry", (10, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+            cv2.imshow("Detection", scaled_frame)
 
     # escape with q
     if cv2.waitKey(1) & 0xFF == ord('q'):
